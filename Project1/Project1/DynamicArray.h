@@ -15,15 +15,20 @@ public:
 	~DynamicArray()
 	{
 		delete[] data;
-	}	//destructor
+	}
 
 
 	void AddToArrayEnd(T newdata)
 	{
 		if (m_nUsedElements == m_nArraySize)
 		{
-
+			newData = new Array[m_nArraySize *= 2];
+			strcpy(newData, data);
 		}
+
+		data[m_nUsedElements] = newdata;		//Adds the new data into the array, then increments the Used Elements variable
+		m_nUsedElements += 1;
+		
 	}
 
 	void ResizeArray
