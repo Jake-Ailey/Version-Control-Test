@@ -1,4 +1,5 @@
 #pragma once
+#include <assert.h>
 
 template<typename T>
 class DynamicArray
@@ -17,24 +18,73 @@ public:
 		delete[] data;
 	}
 
+	/*void CreateArray(T, int size)
+	{
+		data = new T[size];
+		m_nArraySize = size;
+		m_nUsedElements = 0;
+	}*/
 
+	//Function to add to the array and resize it if it is already full
 	void AddToArrayEnd(T newdata)
 	{
-		if (m_nUsedElements == m_nArraySize)
+		if (m_nUsedElements == m_nArraySize)			//Checks to see if the array is already full
 		{
-			newData = new Array[m_nArraySize *= 2];
-			strcpy(newData, data);
+			T* newData = new T[m_nArraySize * 2];		//Creates a new array with twice the size as the original one
+			memcpy(newData, data, m_nArraySize * 2);	//memcpy copies all data from the original array into the new one
+			delete data;								//Deletes the old array
+			data = newData;								//Copies the new, bigger array into the original data variable
+			m_nArraySize *= 2;							//Doubles the ArraySize variable to match the new array size.
+
 		}
 
-		data[m_nUsedElements] = newdata;		//Adds the new data into the array, then increments the Used Elements variable
-		m_nUsedElements += 1;
-		
+		data[m_nUsedElements] = newdata;				//Adds the new data into the array, then increments the Used Elements variable
+		m_nUsedElements += 1;							//Increments the UseElements variable so we know where we're up to		
 	}
 
-	void ResizeArray
+	void ResizeArray(char operation, int size)				//Function to resize the array
 	{
+		if (operation == '*')									//Switch statement to find which operator the user specified
+		{											//Multiplies the array size by the given amount
+			T* newData = new T[m_nArraySize * size];
+			memcpy(newData, data, m_nArraySize * size);
+			delete data;
+			data = newData;
+			m_nArraySize *= size;
+		}
 
+		else if (operation == '/')											//Divides the array size by the given amount
+		{
+			T* newData = new T[m_nArraySize / size];
+			memcpy(newData, data, m_nArraySize / size);
+			delete data;
+			data = newData;
+			m_nArraySize /= size;
+		}
+		else if (operation == '+')											//Adds onto the array size by the given amount
+		{
+			T* newData = new T[m_nArraySize + size];
+			memcpy(newData, data, m_nArraySize + size);
+			delete data;
+			data = newData;
+			m_nArraySize += size;
+		}
+		else if (operation == '-')											//Subtracts from the array size by the given amount
+		{
+			T* newData = new T[m_nArraySize - size];
+			memcpy(newData, data, m_nArraySize - size);
+			delete data;
+			data = newData;
+			m_nArraySize -= size;
+		}
+		else
+		{
+			assert("Incorrect or no operator in use");
+		}
 	}
+		
+
+	
 
 private:
 
@@ -42,9 +92,6 @@ private:
 	int m_nArraySize;
 	int m_nUsedElements;
 
-	// I believe that all functions for this class now need to be in the Source.ccp file
-
-	//RESIZE FUNCTION
 
 	//COPY CONSTRUCTOR:
 	
