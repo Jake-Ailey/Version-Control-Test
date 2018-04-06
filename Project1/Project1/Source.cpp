@@ -4,14 +4,14 @@
 
 int main()
 {
-	DynamicArray<int> Array(10);
+	DynamicArray<int> Array(11);
 
 	for (int i = 0; i < 10; i++)
 	{
 		Array.AddToArrayEnd(i);
+		Array.PrintArray();
 	}
 
-	Array.ResizeArray('*', 2);
 
 	system("pause");
 	return 0;
