@@ -7,7 +7,7 @@ class DynamicArray
 public:
 	//--------------------------------------------------------------------------------------------------|
 	//										CONSTRUCTOR													|
-	//	When a new Dynamic Array is created, the user will need to input the array type, and the initial|
+	//	When a new Dynamic Array is created, the user will need to input the array type and the initial |
 	//	size of the array. Example: DynamicArray<int> myArray(10);										|
 	//--------------------------------------------------------------------------------------------------|
 
@@ -159,8 +159,8 @@ private:
 	//A function for randomly shuffling the array
 	//A function for rotating the array by a given amount
 	// - Rotating an array means to shift elements in a direction
-	//		Any element that would fall off the end wrap back around to the start
-	//		eg: rotating the array {1,2,3,4,5,6,7,8,9} by 2 would give {8,9,1,2,3,4,5,6,7}
-	//			and rotating the array by -4 would give {5,6,7,8,9,1,2,3,4}
+	//		- Any element that would fall off the end wrap back around to the start
+	//		- eg: rotating the array {1,2,3,4,5,6,7,8,9} by 2 would give {8,9,1,2,3,4,5,6,7}
+	//			  and rotating the array by -4 would give {5,6,7,8,9,1,2,3,4}
 };
 
