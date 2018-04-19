@@ -1,7 +1,7 @@
 #pragma once
 
 
-template<typename T>
+template<typename T>		// I believe you may have to consult some youtube tutorials to fully grasp this
 class List
 {
 public:
@@ -17,14 +17,18 @@ public:
 
 	void popFront(T data);			//Remove data from start of list
 
-private:
+protected:
 
 	struct Node
 	{
 		T data;
 		Node* next;
 		Node* prev;
-		Node* begin;
-		Node* end;
+		
 	};
+
+	Node* begin;
+	Node* end = NULL;
+
+	int listSize;
 };
