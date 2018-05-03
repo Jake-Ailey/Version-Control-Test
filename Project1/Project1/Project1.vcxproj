@@ -141,11 +141,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="TemplatedLinkedList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TemplatedDynamicArray.h" />
-    <ClInclude Include="TemplatedLinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

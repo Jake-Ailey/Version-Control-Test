@@ -23,6 +23,70 @@ public:
 		delete[] data;
 	}
 
+	//-----------------------------------------------------------------------------------------------|
+	//										SEARCH ARRAY											 |
+	// A function which searches the array for the specfied target of any given element, and returns |
+	// the target and what index it was at in the array												 |
+	//-----------------------------------------------------------------------------------------------|
+	void SearchArray(T target)
+	{
+		for (int i = 0; i < m_nUsedElements; i++)
+		{
+			if (target == data[i])
+			{
+				std::cout << "The target " << target << " was found at index " << i << std::endl;
+				return;																					//'return' will break the loop if the target is found
+			}
+		}
+
+		std::cout << "The target could not be found within the array" << std::endl;
+	}
+	//_______________________________________________________________________________________________|
+
+	//-----------------------------------------------------------|
+	//						SORT ARRAY							 |
+	// This function takes in a boolean value, where true sorts	 |
+	// the array from highest to lowest, and false sorts in from |
+	// lowest to highest.										 |
+	//															 |
+	//Sorts using a bubble sort									 |
+	//-----------------------------------------------------------|
+	void SortArrayHighest(bool result)
+	{
+		T temp;													//Create a temperary variable of type T
+		if (result == true)					//Sort by highest
+		{
+			for (int i = 1; i < m_nUsedElements; i++)
+			{
+				for (int i = 1; i < m_nUsedElements; i++)
+				{
+					if (data[i - 1] < data[i])
+					{
+						temp = data[i - 1];							//Do a simple swamp, similar to what is done in a bubble sort
+						data[i - 1] = data[i];
+						data[i] = temp;
+					}
+				}
+			}
+		}
+		
+		else // false, or sort by lowest
+		{
+			for (int i = 1; i < m_nUsedElements; i++)			//Exact same as above, except sorts by lowest to highest
+			{
+				for (int i = 1; i < m_nUsedElements; i++)
+				{
+					if (data[i - 1] > data[i])
+					{
+						temp = data[i - 1];
+						data[i - 1] = data[i];
+						data[i] = temp;
+					}
+				}
+			}
+		}
+	}
+
 	//--------------------------------------------------------------------------------------------------|
 	//										RESIZE ARRAY												|
 	//	A function to resize the array by twice it's original size. Primarily called inside other		|
@@ -65,7 +129,7 @@ public:
 		{
 			std::cout << data[i - 1] << ", ";
 		}
-		std::cout << "\b\b}" << std::endl;
+		std::cout << "\b\b}";
 	}
 
 	//--------------------------------------------------------------------------------------------------|
@@ -150,8 +214,6 @@ private:
 	int m_nUsedElements;
 
 	//Challenging additions:
-	//A function to sort the array
-	//A function to search the array for a given element
 	//A function for concatenating two dynamic arrays together
 	//A function for randomly shuffling the array
 	//A function for rotating the array by a given amount
